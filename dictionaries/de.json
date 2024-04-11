@@ -1,5 +1,14 @@
 {
   "home": {
-    "get_started": "Beginnen Sie mit der Bearbeitung"
+    "get_started": "Beginnen Sie mit der Bearbeitung",
+    "by": "Von",
+    "ducs": "Dokumente",
+    "ducs_description": "Hier finden Sie ausführliche Informationen zu den Funktionen und der API von Next.js.",
+    "learn": "Lernen",
+    "learn_description": "Erfahren Sie mehr über Next.js in einem interaktiven Kurs mit Quiz!",
+    "templates": "Vorlagen",
+    "templates_description": "Entdecken Sie Starter-Vorlagen für Next.js.",
+    "deploy": "Einsetzen",
+    "deploy_description": "Stellen Sie Ihre Next.js-Site sofort unter einer gemeinsam nutzbaren URL mit Vercel bereit."
   }
 }

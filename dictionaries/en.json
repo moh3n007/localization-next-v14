@@ -1,5 +1,14 @@
 {
   "home": {
-    "get_started": "Get started by editing"
+    "get_started": "Get started by editing",
+    "by": "By",
+    "ducs": "Ducs",
+    "ducs_description": "Find in-depth information about Next.js features and API.",
+    "learn": "Learn",
+    "learn_description": "Learn about Next.js in an interactive course with quizzes!",
+    "templates": "Templates",
+    "templates_description": "Explore starter templates for Next.js.",
+    "deploy": "Deploy",
+    "deploy_description": "Instantly deploy your Next.js site to a shareable URL with Vercel."
   }
 }
