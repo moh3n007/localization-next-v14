@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { languages } from "@/i18n";
 import { LanguageType } from "@/interfaces/general";
+import LanguageProvider from "@/components/LanguageProvider";
+import { getDictionary } from "@/i18n/getDictionary";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,9 +24,15 @@ export default function RootLayout({
   children: React.ReactNode;
   params: { lng: LanguageType };
 }>) {
+  const langJsonPromise = getDictionary(lng);
+
   return (
     <html lang={lng}>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <LanguageProvider langJsonPromise={langJsonPromise}>
+          {children}
+        </LanguageProvider>
+      </body>
     </html>
   );
 }
