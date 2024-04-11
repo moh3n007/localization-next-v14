@@ -1,6 +1,7 @@
 import { getDictionary } from "@/i18n/getDictionary";
 import { LanguageType } from "@/interfaces/general";
 import Image from "next/image";
+import Link from "next/link";
 
 export default async function Home({
   params: { lng },
@@ -45,7 +46,11 @@ export default async function Home({
           priority
         />
       </div>
-
+      <div className="flex justify-center">
+        <Link href={lng == "en" ? "/de" : "/en"} className="underline">
+          {dict.home.change_to}
+        </Link>
+      </div>
       <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
         <a
           href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"

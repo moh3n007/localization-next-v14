@@ -9,6 +9,7 @@
     "templates": "Templates",
     "templates_description": "Explore starter templates for Next.js.",
     "deploy": "Deploy",
-    "deploy_description": "Instantly deploy your Next.js site to a shareable URL with Vercel."
+    "deploy_description": "Instantly deploy your Next.js site to a shareable URL with Vercel.",
+    "change_to": "Change to German"
   }
 }
