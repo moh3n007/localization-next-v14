@@ -10,7 +10,7 @@ import getPageName from "@utils/getPageName";
 // components
 import ClientComp from "@components/ClientComp";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@components/shared/Link";
 
 // hooks
 import useServerTranstaltion from "@/src/hooks/useServerTranstaltion";

@@ -1,4 +1,4 @@
-import type { TranslatePathType } from "@/interfaces/general";
+import type { TranslatePathType } from "@interfaces/general";
 
 function _replacePlaceholders(
   str: string,

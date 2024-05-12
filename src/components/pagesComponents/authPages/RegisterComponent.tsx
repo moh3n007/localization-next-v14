@@ -6,7 +6,7 @@ import type { FC } from "react";
 // components
 import { Anchor, Box, Button, Text, TextInput, Title } from "@mantine/core";
 import AuthBaseComponent from "./shared/AuthBaseComponent";
-import Link from "next/link";
+import Link from "@components/shared/Link";
 
 // styles
 import classes from "./SignInComponent.module.css";
@@ -29,7 +29,7 @@ const RegisterComponent: FC = () => {
 
         <Text ta="center" mt="md">
           Already have an account?{" "}
-          <Link href={"sign-in"}>
+          <Link href={"/sign-in"}>
             <Anchor component="span" fw={700}>
               Login
             </Anchor>

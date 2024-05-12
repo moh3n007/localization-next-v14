@@ -1,17 +1,17 @@
 // context
-import { LanguageContext } from "@/components/LanguageProvider";
+import { LanguageContext } from "@components/LanguageProvider";
 
 // hooks
 import { use } from "react";
 
 // types
-import type { DictionaryProps, TranslatePathType } from "@/interfaces/general";
+import type { DictionaryProps, TranslatePathType } from "@interfaces/general";
 
 // utils
 import handleTranslate from "@utils/handleTranslate";
 
 export default function useClientTranstaltion() {
-  const dict = use(LanguageContext);
+  const { dict, lng } = use(LanguageContext);
 
   function t(
     path: TranslatePathType<DictionaryProps>,
@@ -22,5 +22,5 @@ export default function useClientTranstaltion() {
     return value;
   }
 
-  return { t };
+  return { t, lng };
 }

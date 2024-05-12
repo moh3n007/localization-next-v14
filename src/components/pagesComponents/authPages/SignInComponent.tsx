@@ -17,7 +17,7 @@ import {
   Title,
 } from "@mantine/core";
 import AuthBaseComponent from "./shared/AuthBaseComponent";
-import Link from "next/link";
+import Link from "@components/shared/Link";
 
 // styles
 import classes from "./SignInComponent.module.css";
@@ -66,7 +66,7 @@ const SignInComponent: FC = () => {
 
         <Text ta="center" mt="md">
           Don&apos;t have an account?{" "}
-          <Link href={"register"}>
+          <Link href={"/register"}>
             <Anchor fw={700} component="span">
               Register
             </Anchor>

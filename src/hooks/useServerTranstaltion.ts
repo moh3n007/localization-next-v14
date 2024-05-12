@@ -3,7 +3,7 @@ import type {
   DictionaryProps,
   LanguageType,
   TranslatePathType,
-} from "@/interfaces/general";
+} from "@interfaces/general";
 
 // utils
 import handleTranslate from "@utils/handleTranslate";
