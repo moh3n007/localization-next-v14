@@ -16,6 +16,7 @@
     "deploy": "Einsetzen",
     "deploy_description": "Stellen Sie Ihre Next.js-Site sofort unter einer gemeinsam nutzbaren URL mit Vercel bereit.",
     "change_to": "Wechseln Sie zu Englisch",
-    "come_from_client": "Es stammt von einer Client-Komponente"
+    "come_from_client": "Es stammt von einer Client-Komponente",
+    "hello_user": "Hallo, {{firstname}} {{lastname}}"
   }
 }

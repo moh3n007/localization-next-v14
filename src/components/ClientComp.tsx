@@ -1,14 +1,15 @@
 "use client";
 
-import { FC, use } from "react";
-import { LanguageContext } from "./LanguageProvider";
+// types
+import type { FC } from "react";
 
-interface ClientCompProps {}
+// translate
+import useClientTranstaltion from "@/src/hooks/useClientTranstaltion";
 
-const ClientComp: FC<ClientCompProps> = (props) => {
-  const dict = use(LanguageContext);
+const ClientComp: FC = () => {
+  const { t } = useClientTranstaltion();
 
-  return <div>{dict?.home.come_from_client}</div>;
+  return <div>{t("home.come_from_client")}</div>;
 };
 
 export default ClientComp;

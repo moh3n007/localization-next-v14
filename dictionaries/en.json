@@ -16,6 +16,7 @@
     "deploy": "Deploy",
     "deploy_description": "Instantly deploy your Next.js site to a shareable URL with Vercel.",
     "change_to": "Change to German",
-    "come_from_client": "It comes from a client component"
+    "come_from_client": "It comes from a client component",
+    "hello_user": "Hello, {{firstname}} {{lastname}}"
   }
 }
