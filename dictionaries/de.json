@@ -1,6 +1,7 @@
 {
   "auth": {
-    "sign_in": "Anmelden"
+    "sign_in": "Anmelden",
+    "sign_up": "Registrieren"
   },
   "home": {
     "home": "Heim",

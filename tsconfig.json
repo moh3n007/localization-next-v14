@@ -18,7 +18,10 @@
       }
     ],
     "paths": {
-      "@config*": ["./src/config/*"],
+      "@config/*": ["./src/config/*"],
+      "@components/*": ["./src/components/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@interfaces/*": ["./src/interfaces/*"],
       "@/*": ["./*"]
     }
   },

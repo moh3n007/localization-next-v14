@@ -2,13 +2,13 @@
 import { getDictionary } from "@/i18n/getDictionary";
 
 // types
-import type { LanguageType } from "@/interfaces/general";
+import type { LanguageType } from "@interfaces/general";
 
 // utils
-import getPageName from "@/src/utils/getPageName";
+import getPageName from "@utils/getPageName";
 
 // components
-import ClientComp from "@/components/ClientComp";
+import ClientComp from "@components/ClientComp";
 import Image from "next/image";
 import Link from "next/link";
 

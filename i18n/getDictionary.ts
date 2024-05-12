@@ -1,4 +1,4 @@
-import { LanguageType } from "@/interfaces/general";
+import { LanguageType } from "@interfaces/general";
 import "server-only";
 
 const dictionaries = {

@@ -1,5 +1,5 @@
 // config
-import APP_CONFIG from "@configindex";
+import APP_CONFIG from "@config/index";
 
 // next.js funcs
 import { cookies } from "next/headers";
@@ -17,9 +17,5 @@ export default function RootLayout({
   // if token is exist
   if (!!token) redirect("/");
 
-  return (
-    <html lang="en">
-      <body>{children}</body>
-    </html>
-  );
+  return <>{children}</>;
 }

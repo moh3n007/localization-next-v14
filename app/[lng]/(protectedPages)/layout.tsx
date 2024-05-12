@@ -1,17 +1,14 @@
-// styles
-import "./globals.css";
-
 // types
-import type { LanguageType } from "@/interfaces/general";
+import type { LanguageType } from "@interfaces/general";
 
 // providers
-import LanguageProvider from "@/components/LanguageProvider";
+import LanguageProvider from "@components/LanguageProvider";
 
 // i18n
 import { getDictionary } from "@/i18n/getDictionary";
 
 // config
-import APP_CONFIG from "@configindex";
+import APP_CONFIG from "@config/index";
 
 // next.js funcs
 import { cookies } from "next/headers";
@@ -21,7 +18,7 @@ import { redirect } from "next/navigation";
 import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
-export default function RootLayout({
+export default function ProtectedPagesLayout({
   children,
   params: { lng },
 }: Readonly<{
@@ -38,12 +35,8 @@ export default function RootLayout({
   if (!token) redirect("/sign-in");
 
   return (
-    <html lang={lng}>
-      <body className={inter.className}>
-        <LanguageProvider langJsonPromise={langJsonPromise}>
-          {children}
-        </LanguageProvider>
-      </body>
-    </html>
+    <LanguageProvider langJsonPromise={langJsonPromise}>
+      {children}
+    </LanguageProvider>
   );
 }
