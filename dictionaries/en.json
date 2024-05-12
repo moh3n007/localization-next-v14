@@ -1,5 +1,9 @@
 {
+  "auth": {
+    "sign_in": "Sign In"
+  },
   "home": {
+    "home": "Home",
     "get_started": "Get started by editing",
     "by": "By",
     "ducs": "Ducs",

@@ -1,5 +1,9 @@
 {
+  "auth": {
+    "sign_in": "Anmelden"
+  },
   "home": {
+    "home": "Heim",
     "get_started": "Beginnen Sie mit der Bearbeitung",
     "by": "Von",
     "ducs": "Dokumente",

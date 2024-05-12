@@ -1,21 +1,25 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+// styles
 import "./globals.css";
-import { languages } from "@/i18n";
-import { LanguageType } from "@/interfaces/general";
+
+// types
+import type { LanguageType } from "@/interfaces/general";
+
+// providers
 import LanguageProvider from "@/components/LanguageProvider";
+
+// i18n
 import { getDictionary } from "@/i18n/getDictionary";
 
+// config
+import APP_CONFIG from "@configindex";
+
+// next.js funcs
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+
+// fonts
+import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "Localized App In Next.JS",
-  description: "Developed by Mohsen Lotfi",
-};
-
-export async function generateStaticParams() {
-  return languages;
-}
 
 export default function RootLayout({
   children,
@@ -25,6 +29,13 @@ export default function RootLayout({
   params: { lng: LanguageType };
 }>) {
   const langJsonPromise = getDictionary(lng);
+
+  const cookie = cookies();
+  const token = cookie.get(APP_CONFIG.tokenName)?.value;
+
+  // redirects the user to sign-in page
+  // if token is not exist
+  if (!token) redirect("/sign-in");
 
   return (
     <html lang={lng}>

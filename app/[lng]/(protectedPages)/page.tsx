@@ -1,8 +1,29 @@
-import ClientComp from "@/components/ClientComp";
+// i18n
 import { getDictionary } from "@/i18n/getDictionary";
-import { LanguageType } from "@/interfaces/general";
+
+// types
+import type { LanguageType } from "@/interfaces/general";
+
+// utils
+import getPageName from "@/src/utils/getPageName";
+
+// components
+import ClientComp from "@/components/ClientComp";
 import Image from "next/image";
 import Link from "next/link";
+
+export async function generateMetadata({
+  params: { lng },
+}: {
+  params: { lng: LanguageType };
+}) {
+  const dict = await getDictionary(lng); // en
+  const title = getPageName(dict.home.home);
+
+  return {
+    title,
+  };
+}
 
 export default async function Home({
   params: { lng },
