@@ -22,13 +22,16 @@ import { usePathname } from "next/navigation";
 // styles
 import classes from "./LanguageSwitcher.module.css";
 
+// utils
+import removeLocalePrefix from "@utils/removeLocalePrefix";
+
 export default function LanguageSwitcher() {
   const { lng, t } = useClientTranstaltion();
   const pathname = usePathname();
 
   const languagesList = useMemo(
     () => languages.filter((_lng) => _lng !== lng),
-    [lng, languages]
+    [lng]
   ) as LanguageType[];
 
   const asPath = removeLocalePrefix(pathname);
@@ -74,10 +77,3 @@ export const countryFlags: {
   de: <GermanyFlagSvg />,
   en: <EnglandFlagSvg />,
 };
-
-function removeLocalePrefix(url: string) {
-  // Regular expression to match any locale prefix followed by a slash
-  const regex = /^\/[a-z]{2}\/?/;
-  // Replace the matched locale prefix with an empty string
-  return url.replace(regex, "");
-}

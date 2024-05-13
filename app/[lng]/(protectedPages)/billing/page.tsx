@@ -1,14 +1,6 @@
-// i18n
 import { getDictionary } from "@/i18n/getDictionary";
-
-// types
-import type { LanguageType } from "@interfaces/general";
-
-// utils
+import { LanguageType } from "@interfaces/general";
 import getPageName from "@utils/getPageName";
-
-// hooks
-import useServerTranstaltion from "@/src/hooks/useServerTranstaltion";
 
 export async function generateMetadata({
   params: { lng },
@@ -16,19 +8,19 @@ export async function generateMetadata({
   params: { lng: LanguageType };
 }) {
   const dict = await getDictionary(lng); // en
-  const title = getPageName(dict.home.home);
+  const title = `${getPageName(dict.billing.billing)} - ${
+    dict.billing.overview
+  }`;
 
   return {
     title,
   };
 }
 
-export default async function Home({
+export default async function BillingPage({
   params: { lng },
 }: {
   params: { lng: LanguageType };
 }) {
-  const { t } = await useServerTranstaltion(lng);
-
-  return <h1>Home</h1>;
+  return <h1>Overview</h1>;
 }

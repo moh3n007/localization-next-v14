@@ -8,7 +8,10 @@ import APP_CONFIG from "@config/index";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
-export default function ProtectedPagesLayout({
+// components
+import ProtectedPagesLayout from "@components/shared/ProtectedPagesLayout";
+
+export default function ProtectedLayout({
   children,
   params: { lng },
 }: Readonly<{
@@ -20,7 +23,7 @@ export default function ProtectedPagesLayout({
 
   // redirects the user to sign-in page
   // if token is not exist
-  if (!token) redirect("/sign-in");
+  if (!token) redirect(`/${lng}/sign-in`);
 
-  return <>{children}</>;
+  return <ProtectedPagesLayout>{children}</ProtectedPagesLayout>;
 }

@@ -25,7 +25,7 @@ const ThemeSwitcher: FC = () => {
         onClick={() => setColorScheme(colorScheme == "dark" ? "light" : "dark")}
         size={"lg"}
       >
-        {colorScheme == "dark" ? (
+        {colorScheme != "dark" ? (
           <IconMoonStars className={classes.icon} />
         ) : (
           <IconSun className={classes.icon} />

@@ -1,5 +1,5 @@
 // components
-import { Flex, Paper } from "@mantine/core";
+import { Box, Flex, Paper } from "@mantine/core";
 import LanguageSwitcher from "@components/shared/LanguageSwitcher";
 import ThemeSwitcher from "@components/shared/ThemeSwitcher";
 
@@ -7,11 +7,11 @@ import ThemeSwitcher from "@components/shared/ThemeSwitcher";
 import type { FC, PropsWithChildren } from "react";
 
 // styles
-import classes from "./AuthBaseComponent.module.css";
+import classes from "./AuthPagesLayout.module.css";
 
-const AuthBaseComponent: FC<PropsWithChildren> = ({ children }) => {
+const AuthPagesLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
-    <div className={classes.wrapper}>
+    <Box className={classes.wrapper}>
       <Flex className={classes.buttons}>
         <LanguageSwitcher />
         <ThemeSwitcher />
@@ -19,8 +19,8 @@ const AuthBaseComponent: FC<PropsWithChildren> = ({ children }) => {
       <Paper className={classes.paper} radius={0} p={30}>
         {children}
       </Paper>
-    </div>
+    </Box>
   );
 };
 
-export default AuthBaseComponent;
+export default AuthPagesLayout;
