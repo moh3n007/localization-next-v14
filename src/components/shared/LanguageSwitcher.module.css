@@ -1,0 +1,8 @@
+.item {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.link {
+  text-decoration: none;
+}

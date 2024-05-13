@@ -21,8 +21,6 @@ const LanguageProvider: FC<LanguageProviderProps> = ({
 }) => {
   const json = use(langJsonPromise);
 
-  console.log({ lng });
-
   return (
     <LanguageContext.Provider value={{ dict: json, lng }}>
       {children}

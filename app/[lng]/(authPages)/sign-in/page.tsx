@@ -10,9 +10,6 @@ import SignInComponent from "@components/pagesComponents/authPages/SignInCompone
 // utils
 import getPageName from "@utils/getPageName";
 
-// styles
-import classes from "./page.module.css";
-
 export async function generateMetadata({
   params: { lng },
 }: {
@@ -31,10 +28,5 @@ export default async function SignIn({
 }: {
   params: { lng: LanguageType };
 }) {
-  const dict = await getDictionary(lng); // en
-  return (
-    <main className={classes.main}>
-      <SignInComponent />
-    </main>
-  );
+  return <SignInComponent />;
 }

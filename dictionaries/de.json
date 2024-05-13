@@ -18,5 +18,8 @@
     "change_to": "Wechseln Sie zu Englisch",
     "come_from_client": "Es stammt von einer Client-Komponente",
     "hello_user": "Hallo, {{firstname}} {{lastname}}"
+  },
+  "general": {
+    "language": "Sprache"
   }
 }

@@ -18,5 +18,8 @@
     "change_to": "Change to German",
     "come_from_client": "It comes from a client component",
     "hello_user": "Hello, {{firstname}} {{lastname}}"
+  },
+  "general": {
+    "language": "Language"
   }
 }

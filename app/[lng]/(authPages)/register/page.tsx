@@ -10,9 +10,6 @@ import RegisterComponent from "@components/pagesComponents/authPages/RegisterCom
 // utils
 import getPageName from "@utils/getPageName";
 
-// styles
-import classes from "./page.module.css";
-
 export async function generateMetadata({
   params: { lng },
 }: {
@@ -31,10 +28,5 @@ export default async function SignUp({
 }: {
   params: { lng: LanguageType };
 }) {
-  const dict = await getDictionary(lng); // en
-  return (
-    <main className={classes.main}>
-      <RegisterComponent />
-    </main>
-  );
+  return <RegisterComponent />;
 }
