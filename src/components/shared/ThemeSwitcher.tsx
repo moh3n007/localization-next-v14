@@ -1,7 +1,7 @@
 "use client";
 
 // components
-import { ActionIcon, useMantineColorScheme } from "@mantine/core";
+import { ActionIcon, Tooltip, useMantineColorScheme } from "@mantine/core";
 
 // icons
 import { IconMoonStars, IconSun } from "@tabler/icons-react";
@@ -12,20 +12,26 @@ import type { FC } from "react";
 // styles
 import classes from "./ThemeSwitcher.module.css";
 
+// hooks
+import useClientTranstaltion from "@hooks/useClientTranstaltion";
+
 const ThemeSwitcher: FC = () => {
   const { setColorScheme, colorScheme } = useMantineColorScheme();
+  const { t } = useClientTranstaltion();
 
   return (
-    <ActionIcon
-      onClick={() => setColorScheme(colorScheme == "dark" ? "light" : "dark")}
-      size={"lg"}
-    >
-      {colorScheme == "dark" ? (
-        <IconMoonStars className={classes.icon} />
-      ) : (
-        <IconSun className={classes.icon} />
-      )}
-    </ActionIcon>
+    <Tooltip label={t("general.theme_mode")}>
+      <ActionIcon
+        onClick={() => setColorScheme(colorScheme == "dark" ? "light" : "dark")}
+        size={"lg"}
+      >
+        {colorScheme == "dark" ? (
+          <IconMoonStars className={classes.icon} />
+        ) : (
+          <IconSun className={classes.icon} />
+        )}
+      </ActionIcon>
+    </Tooltip>
   );
 };
 

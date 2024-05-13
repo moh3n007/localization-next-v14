@@ -1,7 +1,17 @@
 {
   "auth": {
+    "already_have_account": "Already have an account?",
+    "create_account": "Create an account",
+    "dont_have_account": "Don't have an account?",
+    "email": "Email",
+    "keep_me_logged_in": "Keep me logged in",
+    "login": "Login",
+    "or_continue_with_email": "Or continue with email",
+    "password": "Password",
+    "register": "Register",
     "sign_in": "Sign In",
-    "sign_up": "Sign Up"
+    "Sign_up": "Sign Up",
+    "your_password": "Your password"
   },
   "home": {
     "home": "Home",
@@ -20,6 +30,8 @@
     "hello_user": "Hello, {{firstname}} {{lastname}}"
   },
   "general": {
-    "language": "Language"
+    "language": "Language",
+    "theme_mode": "Theme mode",
+    "welcome_to_app_shell": "Welcome to App Shell!"
   }
 }

@@ -1,7 +1,17 @@
 {
   "auth": {
+    "already_have_account": "Sie haben bereits ein Konto?",
+    "create_account": "Ein Konto erstellen",
+    "dont_have_account": "Sie haben noch kein Konto?",
+    "email": "Email",
+    "keep_me_logged_in": "Eingeloggt bleiben",
+    "login": "Anmeldung",
+    "or_continue_with_email": "Oder fahren Sie mit E-Mail fort",
+    "password": "Passwort",
+    "register": "Registrieren",
     "sign_in": "Anmelden",
-    "sign_up": "Registrieren"
+    "Sign_up": "Melden Sie sich an",
+    "your_password": "Ihr Passwort"
   },
   "home": {
     "home": "Heim",
@@ -20,6 +30,8 @@
     "hello_user": "Hallo, {{firstname}} {{lastname}}"
   },
   "general": {
-    "language": "Sprache"
+    "language": "Sprache",
+    "theme_mode": "Themenmodus",
+    "welcome_to_app_shell": "Willkommen bei App Shell!"
   }
 }

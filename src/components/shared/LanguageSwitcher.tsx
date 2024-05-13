@@ -32,7 +32,6 @@ export default function LanguageSwitcher() {
   ) as LanguageType[];
 
   const asPath = removeLocalePrefix(pathname);
-  console.log({ languagesList });
 
   return (
     <Menu shadow="md" width={200} position="bottom-end">

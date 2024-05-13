@@ -10,26 +10,31 @@ import Link from "@components/shared/Link";
 // styles
 import classes from "./SignInComponent.module.css";
 
+// hooks
+import useClientTranstaltion from "@hooks/useClientTranstaltion";
+
 const RegisterComponent: FC = () => {
+  const { t } = useClientTranstaltion();
+
   return (
     <Box component="form">
       <Title order={2} className={classes.title} ta="center" mt="md" mb={50}>
-        Create an account!
+        {t("auth.create_account")}
       </Title>
       <TextInput
-        label="Email address"
-        placeholder="hello@gmail.com"
+        label={t("auth.email")}
+        placeholder="abcd@gmail.com"
         size="md"
       />
       <Button fullWidth mt="xl" size="md">
-        Register
+        {t("auth.register")}
       </Button>
 
       <Text ta="center" mt="md">
-        Already have an account?{" "}
+        {t("auth.already_have_account")}{" "}
         <Link href={"/sign-in"}>
           <Anchor component="span" fw={700}>
-            Login
+            {t("auth.login")}
           </Anchor>
         </Link>
       </Text>

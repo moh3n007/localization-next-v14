@@ -24,11 +24,15 @@ import classes from "./SignInComponent.module.css";
 // icons
 import { IconBrandGoogle, IconBrandTwitter } from "@tabler/icons-react";
 
+// hooks
+import useClientTranstaltion from "@hooks/useClientTranstaltion";
+
 const SignInComponent: FC = () => {
+  const { t } = useClientTranstaltion();
   return (
     <Box component="form">
       <Title order={2} className={classes.title} ta="center" mt="md" mb={50}>
-        Welcome to App Shell!
+        {t("general.welcome_to_app_shell")}
       </Title>
 
       <Group grow mb="md" mt="md">
@@ -40,29 +44,33 @@ const SignInComponent: FC = () => {
         </Button>
       </Group>
 
-      <Divider label="Or continue with email" labelPosition="center" my="lg" />
+      <Divider
+        label={t("auth.or_continue_with_email")}
+        labelPosition="center"
+        my="lg"
+      />
 
       <TextInput
-        label="Email address"
-        placeholder="hello@gmail.com"
+        label={t("auth.email")}
+        placeholder="abcd@gmail.com"
         size="md"
       />
       <PasswordInput
-        label="Password"
-        placeholder="Your password"
+        label={t("auth.password")}
+        placeholder={t("auth.your_password")}
         mt="md"
         size="md"
       />
-      <Checkbox label="Keep me logged in" mt="xl" size="md" />
+      <Checkbox label={t("auth.keep_me_logged_in")} mt="xl" size="md" />
       <Button fullWidth mt="xl" size="md">
-        Login
+        {t("auth.login")}
       </Button>
 
       <Text ta="center" mt="md">
-        Don&apos;t have an account?{" "}
+        {t("auth.dont_have_account")}{" "}
         <Link href={"/register"}>
           <Anchor fw={700} component="span">
-            Register
+            {t("auth.register")}
           </Anchor>
         </Link>
       </Text>
