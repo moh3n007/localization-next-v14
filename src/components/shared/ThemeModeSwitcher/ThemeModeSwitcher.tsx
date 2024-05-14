@@ -10,12 +10,12 @@ import { IconMoonStars, IconSun } from "@tabler/icons-react";
 import type { FC } from "react";
 
 // styles
-import classes from "./ThemeSwitcher.module.css";
+import classes from "./ThemeModeSwitcher.module.css";
 
 // hooks
 import useClientTranstaltion from "@hooks/useClientTranstaltion";
 
-const ThemeSwitcher: FC = () => {
+const ThemeModeSwitcher: FC = () => {
   const { setColorScheme, colorScheme } = useMantineColorScheme();
   const { t } = useClientTranstaltion();
 
@@ -35,4 +35,4 @@ const ThemeSwitcher: FC = () => {
   );
 };
 
-export default ThemeSwitcher;
+export default ThemeModeSwitcher;

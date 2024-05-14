@@ -23,6 +23,7 @@
       "@utils/*": ["./src/utils/*"],
       "@interfaces/*": ["./src/interfaces/*"],
       "@hooks/*": ["./src/hooks/*"],
+      "@atoms/*": ["./src/atoms/*"],
       "@/*": ["./*"]
     }
   },

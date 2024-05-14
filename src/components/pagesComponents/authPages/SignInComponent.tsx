@@ -22,7 +22,7 @@ import Link from "@components/shared/Link";
 import classes from "./SignInComponent.module.css";
 
 // icons
-import { IconBrandGoogle, IconBrandTwitter } from "@tabler/icons-react";
+import { IconBrandGoogle, IconBrandX } from "@tabler/icons-react";
 
 // hooks
 import useClientTranstaltion from "@hooks/useClientTranstaltion";
@@ -39,7 +39,7 @@ const SignInComponent: FC = () => {
         <Button leftSection={<IconBrandGoogle />} radius="xl">
           Google
         </Button>
-        <Button leftSection={<IconBrandTwitter />} radius="xl">
+        <Button leftSection={<IconBrandX />} radius="xl">
           Twitter
         </Button>
       </Group>

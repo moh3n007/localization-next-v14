@@ -19,6 +19,12 @@ const inter = Inter({ subsets: ["latin"] });
 // i18n
 import { getDictionary } from "@/i18n/getDictionary";
 
+// next.js funcs
+import { cookies } from "next/headers";
+
+// config
+import APP_CONFIG from "@config/index";
+
 export default function RootLayout({
   children,
   params: { lng },
@@ -27,6 +33,8 @@ export default function RootLayout({
   params: { lng: LanguageType };
 }>) {
   const langJsonPromise = getDictionary(lng);
+  const cookie = cookies();
+  const palette = cookie.get(APP_CONFIG.paletteName)?.value ?? "blue";
 
   return (
     <html lang={lng}>
@@ -35,7 +43,9 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <LanguageProvider langJsonPromise={langJsonPromise} lng={lng}>
-          <MantineProvider theme={theme}>{children}</MantineProvider>
+          <MantineProvider theme={{ ...theme, primaryColor: palette }}>
+            {children}
+          </MantineProvider>
         </LanguageProvider>
       </body>
     </html>

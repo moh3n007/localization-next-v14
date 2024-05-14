@@ -1,31 +1,37 @@
 "use client";
+
+// components
+import Link from "@components/shared/Link";
+import LanguageSwitcher from "@components/shared/LanguageSwitcher";
+import ThemeModeSwitcher from "@components/shared/ThemeModeSwitcher";
 import {
   AppShell,
   Burger,
   Flex,
   Group,
   NavLink,
-  Skeleton,
   Title,
   rem,
 } from "@mantine/core";
-import { useDisclosure } from "@mantine/hooks";
+
+// icons
 import {
-  IconBrandGoogle,
   IconCreditCard,
   IconCreditCardFilled,
-  IconFingerprint,
-  IconGauge,
   IconHome,
   IconHomeFilled,
 } from "@tabler/icons-react";
+
+// utils
 import removeLocalePrefix from "@utils/removeLocalePrefix";
+
+// types
+import type { FC, PropsWithChildren } from "react";
+
+// hooks
 import { usePathname, useRouter } from "next/navigation";
-import { FC, PropsWithChildren } from "react";
-import Link from "@components/shared/Link";
 import useClientTranstaltion from "@hooks/useClientTranstaltion";
-import LanguageSwitcher from "../LanguageSwitcher";
-import ThemeSwitcher from "../ThemeSwitcher";
+import { useDisclosure } from "@mantine/hooks";
 
 const ProtectedPagesLayout: FC<PropsWithChildren> = ({ children }) => {
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
@@ -62,7 +68,7 @@ const ProtectedPagesLayout: FC<PropsWithChildren> = ({ children }) => {
           <Title order={2}>APP SHELL</Title>
           <Flex visibleFrom="sm" gap={rem(10)} ml={"auto"}>
             <LanguageSwitcher />
-            <ThemeSwitcher />
+            <ThemeModeSwitcher />
           </Flex>
         </Group>
       </AppShell.Header>
