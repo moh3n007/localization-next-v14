@@ -11,7 +11,13 @@ import { redirect } from "next/navigation";
 // components
 import ProtectedPagesLayout from "@components/shared/ProtectedPagesLayout";
 
-export default function ProtectedLayout({
+// utils
+import getUserIdFromtoken from "@utils/getUserIdFromtoken";
+
+// pocketbase
+import pb from "@/pocketbase";
+
+export default async function ProtectedLayout({
   children,
   params: { lng },
 }: Readonly<{
@@ -20,10 +26,18 @@ export default function ProtectedLayout({
 }>) {
   const cookie = cookies();
   const token = cookie.get(APP_CONFIG.tokenName)?.value;
+  const userId = getUserIdFromtoken(token);
 
-  // redirects the user to sign-in page
-  // if token is not exist
-  if (!token) redirect(`/${lng}/sign-in`);
+  try {
+    await pb.collection("users").getOne(userId);
+  } catch (error) {
+    // redirects the user to sign-in page
+    // if token is not exist
+    if (process.env.NODE_ENV != "production") {
+      console.error("Redirect User: User does not exist");
+    }
+    redirect(`/${lng}/sign-in`);
+  }
 
   return <ProtectedPagesLayout>{children}</ProtectedPagesLayout>;
 }

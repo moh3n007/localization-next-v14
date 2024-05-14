@@ -1,5 +1,5 @@
 // context
-import { LanguageContext } from "@components/LanguageProvider";
+import { LanguageContext } from "@/src/providers/LanguageProvider";
 
 // hooks
 import { use } from "react";

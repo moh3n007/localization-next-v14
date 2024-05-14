@@ -1,17 +1,19 @@
 {
   "auth": {
+    "account_created": "Your account successfully created, before login, go to {{email}} and verify you account",
     "already_have_account": "Already have an account?",
+    "congratulations": "Congratulations!",
     "create_account": "Create an account",
+    "credentials_not_correct": "The credentials are not correct",
     "dont_have_account": "Don't have an account?",
-    "email": "Email",
-    "keep_me_logged_in": "Keep me logged in",
+    "email_invalid_or_exist": "The email is invalid or already in use.",
+    "go_to": "Go to {{page}}",
     "login": "Login",
+    "login_successfull": "Logged in successfully",
     "or_continue_with_email": "Or continue with email",
-    "password": "Password",
     "register": "Register",
     "sign_in": "Sign In",
-    "sign_up": "Sign Up",
-    "your_password": "Your password"
+    "sign_up": "Sign Up"
   },
   "home": {
     "home": "Home",
@@ -40,5 +42,14 @@
     "overview": "Overview",
     "preferences": "Preferences",
     "transaction_history": "Transaction history"
+  },
+  "form": {
+    "email": "Email",
+    "email_invalid": "This email is invalid!",
+    "field_required": "This field is required!",
+    "keep_me_logged_in": "Keep me logged in",
+    "less_char": "The minimum character is {{char}}",
+    "password": "Password",
+    "your_password": "Your password"
   }
 }

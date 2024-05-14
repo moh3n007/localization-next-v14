@@ -14,7 +14,13 @@ import classes from "./layout.module.css";
 // types
 import type { LanguageType } from "@interfaces/general";
 
-export default function RootLayout({
+// utils
+import getUserIdFromtoken from "@utils/getUserIdFromtoken";
+
+// pocketbase
+import pb from "@/pocketbase";
+
+export default async function RootLayout({
   children,
   params: { lng },
 }: {
@@ -23,10 +29,17 @@ export default function RootLayout({
 }) {
   const cookie = cookies();
   const token = cookie.get(APP_CONFIG.tokenName)?.value;
+  const userId = getUserIdFromtoken(token);
 
   // redirects the user to home page
   // if token is exist
-  if (!!token) redirect(`/${lng}`);
+  try {
+    const user = await pb.collection("users").getOne(userId);
+    if (process.env.NODE_ENV != "production") {
+      console.error("Redirect User: User exist");
+    }
+    if (!!user.id) redirect(`/${lng}`);
+  } catch (error) {}
 
   return (
     <main className={classes.main}>

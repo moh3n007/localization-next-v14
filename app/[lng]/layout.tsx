@@ -7,7 +7,10 @@ import type { LanguageType } from "@interfaces/general";
 
 // providers
 import { ColorSchemeScript, MantineProvider } from "@mantine/core";
-import LanguageProvider from "@components/LanguageProvider";
+import LanguageProvider from "@/src/providers/LanguageProvider";
+import ReactQueryProvider from "@/src/providers/ReactQueryProvider";
+import NotificationsProvider from "@/src/providers/NotificationsProvider";
+import ModalsProvider from "@/src/providers/ModalsProvider";
 
 // theme
 import theme from "@config/theme";
@@ -44,7 +47,12 @@ export default function RootLayout({
       <body className={inter.className}>
         <LanguageProvider langJsonPromise={langJsonPromise} lng={lng}>
           <MantineProvider theme={{ ...theme, primaryColor: palette }}>
-            {children}
+            <ReactQueryProvider>
+              <ModalsProvider>
+                <NotificationsProvider />
+                {children}
+              </ModalsProvider>
+            </ReactQueryProvider>
           </MantineProvider>
         </LanguageProvider>
       </body>

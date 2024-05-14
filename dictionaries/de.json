@@ -1,17 +1,19 @@
 {
   "auth": {
+    "account_created": "Ihr Konto wurde erfolgreich erstellt. Gehen Sie vor der Anmeldung zu {{email}} und bestätigen Sie Ihr Konto",
     "already_have_account": "Sie haben bereits ein Konto?",
+    "congratulations": "Glückwunsch!",
     "create_account": "Ein Konto erstellen",
+    "credentials_not_correct": "Die Anmeldeinformationen sind nicht korrekt",
     "dont_have_account": "Sie haben noch kein Konto?",
-    "email": "Email",
-    "keep_me_logged_in": "Eingeloggt bleiben",
+    "email_invalid_or_exist": "Die E-Mail ist ungültig oder wird bereits verwendet.",
+    "go_to": "Gehe zu {{page}}",
     "login": "Anmeldung",
+    "login_successfull": "Erfolgreich eingeloggt",
     "or_continue_with_email": "Oder fahren Sie mit E-Mail fort",
-    "password": "Passwort",
     "register": "Registrieren",
     "sign_in": "Anmelden",
-    "sign_up": "Melden Sie sich an",
-    "your_password": "Ihr Passwort"
+    "sign_up": "Melden Sie sich an"
   },
   "home": {
     "home": "Heim",
@@ -40,5 +42,14 @@
     "overview": "Überblick",
     "preferences": "Einstellungen",
     "transaction_history": "Verlauf der Transaktionen"
+  },
+  "form": {
+    "email": "Email",
+    "email_invalid": "Diese E-Mail ist nicht gültig!",
+    "field_required": "Dieses Feld ist erforderlich!",
+    "keep_me_logged_in": "Eingeloggt bleiben",
+    "less_char": "Die Mindestzeichenanzahl beträgt {{char}}",
+    "password": "Passwort",
+    "your_password": "Ihr Passwort"
   }
 }
