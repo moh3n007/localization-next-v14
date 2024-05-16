@@ -1,6 +1,7 @@
 {
   "auth": {
     "account_created": "Your account successfully created, before login, go to {{email}} and verify you account",
+    "account_verified": "Your account verified successfully!",
     "already_have_account": "Already have an account?",
     "congratulations": "Congratulations!",
     "create_account": "Create an account",
@@ -13,7 +14,10 @@
     "or_continue_with_email": "Or continue with email",
     "register": "Register",
     "sign_in": "Sign In",
-    "sign_up": "Sign Up"
+    "sign_up": "Sign Up",
+    "verify": "Verify",
+    "verify_account": "Verify account",
+    "verify_email_first": "Please verify your email first."
   },
   "home": {
     "home": "Home",
@@ -32,9 +36,11 @@
     "hello_user": "Hello, {{firstname}} {{lastname}}"
   },
   "general": {
+    "error": "Error",
     "language": "Language",
-    "theme_mode": "Theme mode",
+    "success": "Success",
     "theme_color": "Theme color",
+    "theme_mode": "Theme mode",
     "welcome_to_app_shell": "Welcome to App Shell!"
   },
   "billing": {
@@ -50,6 +56,8 @@
     "keep_me_logged_in": "Keep me logged in",
     "less_char": "The minimum character is {{char}}",
     "password": "Password",
+    "confirm_password": "Confirm Password",
+    "password_is_not_equal": "The passwords are not equal",
     "your_password": "Your password"
   }
 }

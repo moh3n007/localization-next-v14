@@ -1,7 +1,11 @@
 "use client";
 
 // types
-import type { FC } from "react";
+import { useRef, type FC } from "react";
+import type {
+  LoginDataProps,
+  LoginFormDataProps,
+} from "@interfaces/authPagesProps";
 
 // components
 import {
@@ -28,24 +32,24 @@ import { IconBrandGoogle, IconBrandX } from "@tabler/icons-react";
 import useClientTranstaltion from "@hooks/useClientTranstaltion";
 import { useForm } from "@mantine/form";
 import { useMutation } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
 
 // pocketbase
 import pb from "@/pocketbase";
 
 // funcs
 import { notifications } from "@mantine/notifications";
+import { modals } from "@mantine/modals";
+import { setCookie } from "cookies-next";
 
-interface LoginDataProps {
-  email: string;
-  password: string;
-}
-
-interface LoginFormDataProps extends LoginDataProps {
-  remember_me: boolean;
-}
+// config
+import APP_CONFIG from "@config/index";
 
 const SignInComponent: FC = () => {
   const { t } = useClientTranstaltion();
+  const router = useRouter();
+
+  const rememberMe = useRef(false);
 
   const form = useForm<LoginFormDataProps>({
     mode: "uncontrolled",
@@ -65,16 +69,50 @@ const SignInComponent: FC = () => {
   const { mutate, isPending } = useMutation({
     mutationFn: (props: LoginDataProps) =>
       pb.collection("users").authWithPassword(props.email, props.password),
-    onError: () => {
-      notifications.show({
-        title: t("auth.login"),
-        message: t("auth.credentials_not_correct"),
-        color: "red",
+    onSuccess: (data) => {
+      setCookie(APP_CONFIG.tokenName, data.token, {
+        maxAge: rememberMe.current ? 1296000 : 86400,
       });
+      router.refresh();
+    },
+    onError: (error: any) => {
+      if (error.response.code == 403) {
+        modals.openConfirmModal({
+          title: t("auth.verify_account"),
+          children: <Text>{t("auth.verify_email_first")}</Text>,
+          centered: true,
+          withCloseButton: false,
+          cancelProps: {
+            display: "none",
+          },
+          confirmProps: {
+            fullWidth: true,
+          },
+          labels: { confirm: "OK", cancel: "" },
+        });
+      } else {
+        notifications.show({
+          title: t("auth.login"),
+          message: t("auth.credentials_not_correct"),
+          color: "red",
+        });
+      }
+    },
+  });
+
+  const { mutate: googleMutate } = useMutation({
+    mutationFn: (provider: "google" | "twitter") =>
+      pb.collection("users").authWithOAuth2({ provider }),
+    onSuccess: (data) => {
+      setCookie(APP_CONFIG.tokenName, data.token, {
+        maxAge: rememberMe.current ? 1296000 : 86400,
+      });
+      router.refresh();
     },
   });
 
   const onSubmit = (data: LoginFormDataProps) => {
+    rememberMe.current = data.remember_me;
     mutate(data);
   };
 
@@ -85,10 +123,18 @@ const SignInComponent: FC = () => {
       </Title>
 
       <Group grow mb="md" mt="md">
-        <Button leftSection={<IconBrandGoogle />} radius="xl">
+        <Button
+          leftSection={<IconBrandGoogle />}
+          radius="xl"
+          onClick={() => googleMutate("google")}
+        >
           Google
         </Button>
-        <Button leftSection={<IconBrandX />} radius="xl">
+        <Button
+          leftSection={<IconBrandX />}
+          radius="xl"
+          onClick={() => googleMutate("twitter")}
+        >
           Twitter
         </Button>
       </Group>

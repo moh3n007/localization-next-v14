@@ -2,9 +2,21 @@
 
 // types
 import { useRef, type FC } from "react";
+import type {
+  RegisterDataProps,
+  UserRegisterData,
+} from "@interfaces/authPagesProps";
 
 // components
-import { Anchor, Box, Button, Text, TextInput, Title } from "@mantine/core";
+import {
+  Anchor,
+  Box,
+  Button,
+  PasswordInput,
+  Text,
+  TextInput,
+  Title,
+} from "@mantine/core";
 import Link from "@components/shared/Link";
 
 // styles
@@ -22,16 +34,6 @@ import pb from "@/pocketbase";
 import { modals } from "@mantine/modals";
 import { notifications } from "@mantine/notifications";
 
-interface RegisterDataProps {
-  email: string;
-}
-
-interface UserRegisterData extends RegisterDataProps {
-  password: string;
-  passwordConfirm: string;
-  verified?: boolean;
-}
-
 const RegisterComponent: FC = () => {
   const { t } = useClientTranstaltion();
 
@@ -41,18 +43,32 @@ const RegisterComponent: FC = () => {
     mode: "uncontrolled",
     initialValues: {
       email: "",
+      password: "",
+      passwordConfirm: "",
     },
 
     validate: {
       email: (value) =>
-        /^\S+@\S+$/.test(value) ? null : t("form.email_invalid"),
+        !!value
+          ? /^\S+@\S+$/.test(value)
+            ? null
+            : t("form.email_invalid")
+          : t("form.field_required"),
+      password: (value) =>
+        !!value
+          ? value.length < 8
+            ? t("form.less_char", { char: "8" })
+            : null
+          : t("form.field_required"),
+      passwordConfirm: (value, values) =>
+        value != values.password ? t("form.password_is_not_equal") : null,
     },
   });
 
   const { mutate, isPending } = useMutation({
     mutationFn: (props: UserRegisterData) =>
       pb.collection("users").create(props),
-    onSuccess: () => {
+    onSuccess: async () => {
       modals.openContextModal({
         modal: "register",
         innerProps: {
@@ -64,6 +80,7 @@ const RegisterComponent: FC = () => {
         withCloseButton: false,
       });
       form.reset();
+      await pb.collection("users").requestVerification(emailRef.current);
     },
     onError: (error) => {
       notifications.show({
@@ -76,9 +93,7 @@ const RegisterComponent: FC = () => {
 
   const onSubmit = (data: RegisterDataProps) => {
     const userData: UserRegisterData = {
-      email: data.email,
-      password: "temp1234",
-      passwordConfirm: "temp1234",
+      ...data,
       verified: false,
     };
     emailRef.current = data.email;
@@ -97,6 +112,24 @@ const RegisterComponent: FC = () => {
         withAsterisk
         key={form.key("email")}
         {...form.getInputProps("email")}
+      />
+      <PasswordInput
+        label={t("form.password")}
+        placeholder={t("form.your_password")}
+        mt="md"
+        size="md"
+        withAsterisk
+        key={form.key("password")}
+        {...form.getInputProps("password")}
+      />
+      <PasswordInput
+        label={t("form.confirm_password")}
+        placeholder={t("form.your_password")}
+        mt="md"
+        size="md"
+        withAsterisk
+        key={form.key("passwordConfirm")}
+        {...form.getInputProps("passwordConfirm")}
       />
       <Button fullWidth mt="xl" size="md" type="submit" loading={isPending}>
         {t("auth.register")}

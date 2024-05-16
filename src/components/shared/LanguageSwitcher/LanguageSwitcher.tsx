@@ -40,7 +40,7 @@ export default function LanguageSwitcher() {
     <Menu shadow="md" width={200} position="bottom-end">
       <Menu.Target>
         <Tooltip label={t("general.language")}>
-          <ActionIcon size="lg">
+          <ActionIcon size="lg" className={classes.button}>
             <IconLanguage size="1.2rem" />
           </ActionIcon>
         </Tooltip>

@@ -6,3 +6,10 @@
 .link {
   text-decoration: none;
 }
+
+.button {
+  @media (max-width: $mantine-breakpoint-sm) {
+    width: rem(24);
+    height: rem(24);
+  }
+}

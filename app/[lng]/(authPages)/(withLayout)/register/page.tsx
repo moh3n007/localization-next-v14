@@ -5,7 +5,7 @@ import { getDictionary } from "@/i18n/getDictionary";
 import type { LanguageType } from "@interfaces/general";
 
 // components
-import SignInComponent from "@components/pagesComponents/authPages/SignInComponent";
+import RegisterComponent from "@components/pagesComponents/authPages/RegisterComponent";
 
 // utils
 import getPageName from "@utils/getPageName";
@@ -16,17 +16,13 @@ export async function generateMetadata({
   params: { lng: LanguageType };
 }) {
   const dict = await getDictionary(lng);
-  const title = getPageName(dict.auth.sign_in);
+  const title = getPageName(dict.auth.sign_up);
 
   return {
     title,
   };
 }
 
-export default async function SignIn({
-  params: { lng },
-}: {
-  params: { lng: LanguageType };
-}) {
-  return <SignInComponent />;
+export default async function SignUp() {
+  return <RegisterComponent />;
 }

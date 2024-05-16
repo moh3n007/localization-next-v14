@@ -23,4 +23,10 @@
   top: rem(24);
   right: rem(24);
   gap: rem(10);
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    top: rem(8);
+    right: rem(8);
+    gap: rem(8);
+  }
 }

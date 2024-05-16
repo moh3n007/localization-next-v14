@@ -11,6 +11,7 @@ import LanguageProvider from "@/src/providers/LanguageProvider";
 import ReactQueryProvider from "@/src/providers/ReactQueryProvider";
 import NotificationsProvider from "@/src/providers/NotificationsProvider";
 import ModalsProvider from "@/src/providers/ModalsProvider";
+import JotaiProvider from "@/src/providers/JotaiProvider";
 
 // theme
 import theme from "@config/theme";
@@ -45,16 +46,18 @@ export default function RootLayout({
         <ColorSchemeScript />
       </head>
       <body className={inter.className}>
-        <LanguageProvider langJsonPromise={langJsonPromise} lng={lng}>
-          <MantineProvider theme={{ ...theme, primaryColor: palette }}>
-            <ReactQueryProvider>
-              <ModalsProvider>
-                <NotificationsProvider />
-                {children}
-              </ModalsProvider>
-            </ReactQueryProvider>
-          </MantineProvider>
-        </LanguageProvider>
+        <JotaiProvider>
+          <LanguageProvider langJsonPromise={langJsonPromise} lng={lng}>
+            <MantineProvider theme={{ ...theme, primaryColor: palette }}>
+              <ReactQueryProvider>
+                <ModalsProvider>
+                  <NotificationsProvider />
+                  {children}
+                </ModalsProvider>
+              </ReactQueryProvider>
+            </MantineProvider>
+          </LanguageProvider>
+        </JotaiProvider>
       </body>
     </html>
   );
