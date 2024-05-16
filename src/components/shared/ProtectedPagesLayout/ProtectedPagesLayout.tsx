@@ -29,9 +29,10 @@ import removeLocalePrefix from "@utils/removeLocalePrefix";
 import type { FC, PropsWithChildren } from "react";
 
 // hooks
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import useClientTranstaltion from "@hooks/useClientTranstaltion";
 import { useDisclosure } from "@mantine/hooks";
+import { useRouter } from "@hooks/useRouter";
 
 const ProtectedPagesLayout: FC<PropsWithChildren> = ({ children }) => {
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();

@@ -29,6 +29,10 @@ import { cookies } from "next/headers";
 // config
 import APP_CONFIG from "@config/index";
 
+// components
+import NavigationProgress from "@components/shared/NavigationProgress/NavigationProgress";
+import { Suspense } from "react";
+
 export default function RootLayout({
   children,
   params: { lng },
@@ -49,6 +53,9 @@ export default function RootLayout({
         <JotaiProvider>
           <LanguageProvider langJsonPromise={langJsonPromise} lng={lng}>
             <MantineProvider theme={{ ...theme, primaryColor: palette }}>
+              <Suspense fallback={null}>
+                <NavigationProgress />
+              </Suspense>
               <ReactQueryProvider>
                 <ModalsProvider>
                   <NotificationsProvider />

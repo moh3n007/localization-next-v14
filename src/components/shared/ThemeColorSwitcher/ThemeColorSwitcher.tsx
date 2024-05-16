@@ -23,7 +23,7 @@ import classes from "./ThemeColorSwitcher.module.css";
 
 // hooks
 import useClientTranstaltion from "@hooks/useClientTranstaltion";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@hooks/useRouter";
 import { useAtom } from "jotai";
 
 // atoms

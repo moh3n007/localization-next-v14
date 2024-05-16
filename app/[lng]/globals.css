@@ -8,3 +8,24 @@ body {
   width: 100%;
   min-height: 100vh;
 }
+
+#nprogress {
+  /* pointer-events: "none"; */
+  z-index: 999999;
+}
+
+#nprogress .bar {
+  background:
+    /* theme.colors[theme.primaryColor][theme.colorScheme === "dark" ? 7 : 3], */ var(
+    --mantine-color-gray-5
+  );
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: rem(4);
+}
+#nprogress .spinner {
+  top: calc(100% - rem(32)) !important;
+}

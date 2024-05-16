@@ -158,13 +158,6 @@
     "@mantine/store" "7.9.1"
     react-transition-group "4.4.5"
 
-"@mantine/nprogress@^7.9.1":
-  version "7.9.1"
-  resolved "https://registry.yarnpkg.com/@mantine/nprogress/-/nprogress-7.9.1.tgz#4dfe98b9d3a2a8d22b161a09c64b3f15b46fc904"
-  integrity sha512-i1jK8nhLVZ7Hkz1/pu6ouoz45uOqX4G//e+HFwxDHJSvMnVF+kyr7hRr02JAf8ifPjLxWMLuDXDNrQ/WNslKNg==
-  dependencies:
-    "@mantine/store" "7.9.1"
-
 "@mantine/store@7.9.1":
   version "7.9.1"
   resolved "https://registry.yarnpkg.com/@mantine/store/-/store-7.9.1.tgz#f1291bb9dce35bf8baa6ea627938637d62a3c83c"
@@ -310,6 +303,11 @@
   integrity sha512-wq0cICSkRLVaf3UGLMGItu/PtdY7oaXaI/RVU+xliKVOtRna3PRY57ZDfztpDL0n11vfymMUnXv8QwYCO7L1wg==
   dependencies:
     undici-types "~5.26.4"
+
+"@types/nprogress@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@types/nprogress/-/nprogress-0.2.3.tgz#b2150b054a13622fabcba12cf6f0b54c48b14287"
+  integrity sha512-k7kRA033QNtC+gLc4VPlfnue58CM1iQLgn1IMAU8VPHGOj7oIHPp9UlhedEnD/Gl8evoCjwkZjlBORtZ3JByUA==
 
 "@types/prop-types@*":
   version "15.7.12"
@@ -1924,6 +1922,11 @@ normalize-range@^0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/normalize-range/-/normalize-range-0.1.2.tgz#2d10c06bdfd312ea9777695a4d28439456b75942"
   integrity sha512-bdok/XvKII3nUpklnV6P2hxtMNrCboOjAcyBuQnWEhO665FwrSNRxU+AqpsyvO6LgGYPspN+lu5CLtw4jPRKNA==
+
+nprogress@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/nprogress/-/nprogress-0.2.0.tgz#cb8f34c53213d895723fcbab907e9422adbcafb1"
+  integrity sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA==
 
 object-assign@^4.1.1:
   version "4.1.1"

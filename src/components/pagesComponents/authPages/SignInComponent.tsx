@@ -32,7 +32,7 @@ import { IconBrandGoogle, IconBrandX } from "@tabler/icons-react";
 import useClientTranstaltion from "@hooks/useClientTranstaltion";
 import { useForm } from "@mantine/form";
 import { useMutation } from "@tanstack/react-query";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@hooks/useRouter";
 
 // pocketbase
 import pb from "@/pocketbase";
@@ -121,7 +121,6 @@ const SignInComponent: FC = () => {
       <Title order={2} className={classes.title} ta="center" mt="md" mb={50}>
         {t("general.welcome_to_app_shell")}
       </Title>
-
       <Group grow mb="md" mt="md">
         <Button
           leftSection={<IconBrandGoogle />}
