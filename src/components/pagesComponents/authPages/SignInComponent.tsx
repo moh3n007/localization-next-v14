@@ -33,6 +33,8 @@ import useClientTranstaltion from "@hooks/useClientTranstaltion";
 import { useForm } from "@mantine/form";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "@hooks/useRouter";
+import { useSetAtom } from "jotai";
+import { userIdAtom } from "@atoms/generalAtoms";
 
 // pocketbase
 import pb from "@/pocketbase";
@@ -48,6 +50,8 @@ import APP_CONFIG from "@config/index";
 const SignInComponent: FC = () => {
   const { t } = useClientTranstaltion();
   const router = useRouter();
+
+  const setUserId = useSetAtom(userIdAtom);
 
   const rememberMe = useRef(false);
 
@@ -73,6 +77,7 @@ const SignInComponent: FC = () => {
       setCookie(APP_CONFIG.tokenName, data.token, {
         maxAge: rememberMe.current ? 1296000 : 86400,
       });
+      setUserId(data.record.id);
       router.refresh();
     },
     onError: (error: any) => {

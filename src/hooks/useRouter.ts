@@ -10,8 +10,6 @@ export function useRouter(): ReturnType<typeof useRouterOriginal> {
   return {
     ...router,
     push: (href, options) => {
-      console.log(shouldTriggerStartEvent(href));
-
       if (shouldTriggerStartEvent(href)) onStart();
       router.push(href, options);
     },

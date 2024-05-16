@@ -18,3 +18,5 @@ export const paletteAtom = atom(
     set(_paletteAtom, newPalette as string);
   }
 );
+
+export const userIdAtom = atom("");

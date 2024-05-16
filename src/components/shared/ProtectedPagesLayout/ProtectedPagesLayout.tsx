@@ -1,5 +1,8 @@
 "use client";
 
+// next.js funcs
+import dynamic from "next/dynamic";
+
 // components
 import Link from "@components/shared/Link";
 import LanguageSwitcher from "@components/shared/LanguageSwitcher";
@@ -10,6 +13,7 @@ import {
   Flex,
   Group,
   NavLink,
+  Skeleton,
   Title,
   rem,
 } from "@mantine/core";
@@ -33,6 +37,14 @@ import { usePathname } from "next/navigation";
 import useClientTranstaltion from "@hooks/useClientTranstaltion";
 import { useDisclosure } from "@mantine/hooks";
 import { useRouter } from "@hooks/useRouter";
+
+const UserProfile = dynamic(
+  () => import("./ProtectedPagesLayout/UserProfile"),
+  {
+    ssr: false,
+    loading: () => <Skeleton w={"100%"} h={rem(38)} />,
+  }
+);
 
 const ProtectedPagesLayout: FC<PropsWithChildren> = ({ children }) => {
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
@@ -130,6 +142,9 @@ const ProtectedPagesLayout: FC<PropsWithChildren> = ({ children }) => {
             />
           </Link>
         </NavLink>
+        <Flex mt={"auto"}>
+          <UserProfile />
+        </Flex>
       </AppShell.Navbar>
       <AppShell.Main>{children}</AppShell.Main>
     </AppShell>

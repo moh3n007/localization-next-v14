@@ -42,6 +42,7 @@ const RegisterComponent: FC = () => {
   const form = useForm<RegisterDataProps>({
     mode: "uncontrolled",
     initialValues: {
+      name: "",
       email: "",
       password: "",
       passwordConfirm: "",
@@ -54,6 +55,12 @@ const RegisterComponent: FC = () => {
             ? null
             : t("form.email_invalid")
           : t("form.field_required"),
+      name: (value) =>
+        !!value
+          ? value.length < 3
+            ? t("form.less_char", { char: "3" })
+            : null
+          : t("form.field_required"),
       password: (value) =>
         !!value
           ? value.length < 8
@@ -61,7 +68,11 @@ const RegisterComponent: FC = () => {
             : null
           : t("form.field_required"),
       passwordConfirm: (value, values) =>
-        value != values.password ? t("form.password_is_not_equal") : null,
+        !!value
+          ? value != values.password
+            ? t("form.password_is_not_equal")
+            : null
+          : t("form.field_required"),
     },
   });
 
@@ -105,6 +116,7 @@ const RegisterComponent: FC = () => {
       <Title order={2} className={classes.title} ta="center" mt="md" mb={50}>
         {t("auth.create_account")}
       </Title>
+
       <TextInput
         label={t("form.email")}
         placeholder="abcd@gmail.com"
@@ -112,6 +124,15 @@ const RegisterComponent: FC = () => {
         withAsterisk
         key={form.key("email")}
         {...form.getInputProps("email")}
+      />
+      <TextInput
+        label={t("form.name")}
+        placeholder="John Duo,..."
+        mt="md"
+        size="md"
+        withAsterisk
+        key={form.key("name")}
+        {...form.getInputProps("name")}
       />
       <PasswordInput
         label={t("form.password")}

@@ -41,6 +41,7 @@
     "success": "Erfolg",
     "theme_color": "Themenfarbe",
     "theme_mode": "Themenmodus",
+    "theme": "Thema",
     "welcome_to_app_shell": "Willkommen bei App Shell!"
   },
   "billing": {
@@ -58,6 +59,7 @@
     "password": "Passwort",
     "confirm_password": "Bestätige das Passwort",
     "password_is_not_equal": "Die Passwörter sind nicht gleich",
-    "your_password": "Ihr Passwort"
+    "your_password": "Ihr Passwort",
+    "name": "Name"
   }
 }
