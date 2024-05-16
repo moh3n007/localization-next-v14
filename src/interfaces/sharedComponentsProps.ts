@@ -6,3 +6,7 @@ export type LinkProps = NextLinkProps &
   PropsWithChildren & {
     className?: string;
   };
+
+export interface NavLinksProps {
+  toggleMobile: VoidFunction;
+}

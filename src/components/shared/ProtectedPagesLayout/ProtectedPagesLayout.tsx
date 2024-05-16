@@ -1,64 +1,28 @@
 "use client";
 
-// next.js funcs
-import dynamic from "next/dynamic";
-
 // components
-import Link from "@components/shared/Link";
-import LanguageSwitcher from "@components/shared/LanguageSwitcher";
-import ThemeModeSwitcher from "@components/shared/ThemeModeSwitcher";
-import {
-  AppShell,
-  Burger,
-  Flex,
-  Group,
-  NavLink,
-  Skeleton,
-  Title,
-  rem,
-} from "@mantine/core";
-
-// icons
-import {
-  IconCreditCard,
-  IconCreditCardFilled,
-  IconHome,
-  IconHomeFilled,
-} from "@tabler/icons-react";
-
-// utils
-import removeLocalePrefix from "@utils/removeLocalePrefix";
+import NotificationMenu from "./ProtectedPagesLayout/NotificationMenu";
+import NavLinks from "./ProtectedPagesLayout/NavLinks";
+import { AppShell, Burger, Flex, Group, Title, rem } from "@mantine/core";
 
 // types
 import type { FC, PropsWithChildren } from "react";
 
 // hooks
-import { usePathname } from "next/navigation";
-import useClientTranstaltion from "@hooks/useClientTranstaltion";
 import { useDisclosure } from "@mantine/hooks";
-import { useRouter } from "@hooks/useRouter";
 
-const UserProfile = dynamic(
-  () => import("./ProtectedPagesLayout/UserProfile"),
-  {
-    ssr: false,
-    loading: () => <Skeleton w={"100%"} h={rem(38)} />,
-  }
-);
+// config
+import APP_CONFIG from "@config/index";
 
 const ProtectedPagesLayout: FC<PropsWithChildren> = ({ children }) => {
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
   const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
 
-  const pathname = usePathname();
-  const router = useRouter();
-  const { t, lng } = useClientTranstaltion();
-
   return (
     <AppShell
-      header={{ height: 60 }}
+      header={{ height: rem(60) }}
       navbar={{
-        width: 300,
+        width: rem(300),
         breakpoint: "sm",
         collapsed: { mobile: !mobileOpened, desktop: !desktopOpened },
       }}
@@ -78,73 +42,14 @@ const ProtectedPagesLayout: FC<PropsWithChildren> = ({ children }) => {
             visibleFrom="sm"
             size="sm"
           />
-          <Title order={2}>APP SHELL</Title>
+          <Title order={2}>{APP_CONFIG.appName}</Title>
           <Flex visibleFrom="sm" gap={rem(10)} ml={"auto"}>
-            <LanguageSwitcher />
-            <ThemeModeSwitcher />
+            <NotificationMenu />
           </Flex>
         </Group>
       </AppShell.Header>
       <AppShell.Navbar p="md">
-        <Link href={"/"}>
-          <NavLink
-            component="div"
-            label={t("home.home")}
-            leftSection={
-              removeLocalePrefix(pathname) == "" ||
-              removeLocalePrefix(pathname) == "/" ? (
-                <IconHomeFilled size="1rem" stroke={1.5} />
-              ) : (
-                <IconHome size="1rem" stroke={1.5} />
-              )
-            }
-            childrenOffset={28}
-            active={
-              removeLocalePrefix(pathname) == "" ||
-              removeLocalePrefix(pathname) == "/"
-            }
-          />
-        </Link>
-        <NavLink
-          label={t("billing.billing")}
-          childrenOffset={28}
-          leftSection={
-            removeLocalePrefix(pathname).includes("billing") ? (
-              <IconCreditCardFilled size="1rem" stroke={1.5} />
-            ) : (
-              <IconCreditCard size="1rem" stroke={1.5} />
-            )
-          }
-          active={removeLocalePrefix(pathname).includes("billing")}
-          component="div"
-          onClick={() => router.push(`/${lng}/billing`)}
-          opened={removeLocalePrefix(pathname).includes("billing")}
-        >
-          <Link href={"/billing"}>
-            <NavLink
-              label={t("billing.overview")}
-              active={removeLocalePrefix(pathname) == "billing"}
-              component="div"
-            />
-          </Link>
-          <Link href={"/billing/history"}>
-            <NavLink
-              label={t("billing.transaction_history")}
-              active={removeLocalePrefix(pathname) == "billing/history"}
-              component="div"
-            />
-          </Link>
-          <Link href={"/billing/preferences"}>
-            <NavLink
-              label={t("billing.preferences")}
-              active={removeLocalePrefix(pathname) == "billing/preferences"}
-              component="div"
-            />
-          </Link>
-        </NavLink>
-        <Flex mt={"auto"}>
-          <UserProfile />
-        </Flex>
+        <NavLinks toggleMobile={toggleMobile} />
       </AppShell.Navbar>
       <AppShell.Main>{children}</AppShell.Main>
     </AppShell>

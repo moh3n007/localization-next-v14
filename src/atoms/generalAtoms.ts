@@ -1,6 +1,9 @@
 // config
 import APP_CONFIG from "@config/index";
 
+// utils
+import getUserIdFromtoken from "@utils/getUserIdFromtoken";
+
 // funcs
 import { getCookie, setCookie } from "cookies-next";
 import { atom } from "jotai";
@@ -19,4 +22,17 @@ export const paletteAtom = atom(
   }
 );
 
-export const userIdAtom = atom("");
+const _userIdAtom = atom<string | undefined>(undefined);
+
+export const userIdAtom = atom(
+  (get) => {
+    const token = getCookie(APP_CONFIG.tokenName);
+    const userId = getUserIdFromtoken(token) ?? "";
+    const _userId = get(_userIdAtom);
+
+    return _userId ?? userId;
+  },
+  (get, set, newToken) => {
+    set(_userIdAtom, newToken as string);
+  }
+);

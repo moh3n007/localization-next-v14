@@ -4,6 +4,12 @@
   cursor: pointer;
 }
 
+.dropdown {
+  @media (max-width: $mantine-breakpoint-sm) {
+    width: calc(100% - rem(12)) !important;
+  }
+}
+
 .segmentRoot {
   line-height: unset;
 }

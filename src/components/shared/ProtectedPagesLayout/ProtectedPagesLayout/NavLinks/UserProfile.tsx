@@ -28,8 +28,9 @@ import { IconDeviceDesktop, IconMoon, IconSun } from "@tabler/icons-react";
 
 // hooks
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { useAtomValue, useSetAtom } from "jotai";
+import { useAtom, useSetAtom } from "jotai";
 import { useRouter } from "next/navigation";
+import useClientTranstaltion from "@hooks/useClientTranstaltion";
 
 // styles
 import classes from "./UserProfile.module.css";
@@ -39,12 +40,12 @@ import { deleteCookie } from "cookies-next";
 
 // config
 import APP_CONFIG from "@config/index";
-import useClientTranstaltion from "@hooks/useClientTranstaltion";
 
 const UserProfile: FC = () => {
-  const userId = useAtomValue(userIdAtom);
-
   const router = useRouter();
+  const { t } = useClientTranstaltion();
+
+  const [userId] = useAtom(userIdAtom);
   const setUserId = useSetAtom(userIdAtom);
 
   const queryClient = useQueryClient();
@@ -62,10 +63,10 @@ const UserProfile: FC = () => {
     enabled: !!userId,
   });
 
-  if (isLoading) return <Skeleton w={"100%"} h={rem(38)} />;
+  if (isLoading) return <Skeleton w={"100%"} h={rem(26)} />;
 
   return (
-    <Menu shadow="md">
+    <Menu shadow="md" classNames={{ dropdown: classes.dropdown }}>
       <Menu.Target>
         <Flex className={classes.userMenu}>
           <Avatar src={data?.avatar} size={"sm"} />
@@ -77,7 +78,7 @@ const UserProfile: FC = () => {
         <Divider />
         <ThemeModeSwwitcher />
         <Menu.Item color="red" onClick={handleLogout}>
-          Logout
+          {t("general.logout")}
         </Menu.Item>
       </Menu.Dropdown>
     </Menu>

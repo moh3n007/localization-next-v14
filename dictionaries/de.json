@@ -42,7 +42,8 @@
     "theme_color": "Themenfarbe",
     "theme_mode": "Themenmodus",
     "theme": "Thema",
-    "welcome_to_app_shell": "Willkommen bei App Shell!"
+    "welcome_to_app_shell": "Willkommen bei App Shell!",
+    "logout": "Ausloggen"
   },
   "billing": {
     "billing": "Abrechnung",
